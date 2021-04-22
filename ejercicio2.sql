@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS especie_animal (
     nombre_vulgar VARCHAR(255) NOT NULL,
     nombre_cientifico VARCHAR(255) NOT NULL,
     familia VARCHAR(255) NOT NULL,
-    peligro_extincion TINYINT NOT NULL
+    peligro_extincion BOOL NOT NULL
 );
 
 -- CREAR TABLA animal
@@ -35,6 +35,7 @@ CREATE TABLE IF NOT EXISTS animal (
     FOREIGN KEY (especie) REFERENCES especie_animal (id)
 );
 
+BEGIN;
 -- INSERT TABLA zoo
 INSERT INTO zoo (nombre, ciudad, pais, tamaño, presupuesto_anual)
 VALUES 
@@ -60,6 +61,7 @@ VALUES
 ('Piton', 'Serpentius', 'Serpientus Pyton', 0),
 ('Elefante Africano', 'Elephantidae Proboscidea', 'Elephantidae ', 1);
 
+SAVEPOINT;
 -- INSERT TABLA animal
 INSERT INTO animal (num_id_unico, especie, sexo, ano_nacimiento, pais_origen, continente, zoo)
 VALUES
@@ -67,3 +69,5 @@ VALUES
 (65435168, 3, 'F', '1998-07-01', 'Asturias','Europa', 1),
 (6546843, 9, 'M', '2011-02-08', 'Selva del Congo', 'Calasmxpaksm', 1),
 (316843, 4, 'M', '1978-05-23', 'Pantano De las losanas', 'Valencia', 1);
+
+COMMIT;

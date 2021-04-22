@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS socio (
     ciudad VARCHAR(90) NOT NULL,
     pais VARCHAR(60) NOT NULL,
     telefono INT NOT NULL,
-    activo TINYINT NOT NULL
+    activo BOOL NOT NULL
 );
 
 -- CREACION TABLA patron
@@ -55,6 +55,8 @@ CREATE TABLE IF NOT EXISTS salida(
     FOREIGN KEY (patron) REFERENCES patron (id)
 );
 
+-- TRANSACCIONES
+BEGIN;
 -- INSERTS EN LA TABLA socio
 INSERT INTO socio (nombre, apellido1, apellido2, dni, email, codigo_postal, direccion, ciudad, pais, telefono, activo)
 VALUES
@@ -75,7 +77,7 @@ VALUES
 ('Ganer', 'Patrick', 'Junior', '54123698K', 'ganer.patrick@gmail.com', 698745699),
 ('Albert', 'Jhonson', 'Rodriguez', '87569412D', 'albert.jhonson@gmail.com', 549853622),
 ('Jordi', 'Evole', 'Inventado', '65471567S', 'jordi.evole@gmail.com', 635894566);
-
+SAVEPOINT;
 
 -- INSERTS EN LA TABLA barco
 INSERT INTO barco (num_matricula, nombre, numero_amarre, cuota, socio, patron)
@@ -86,3 +88,12 @@ VALUES
 ('HBDFAB23432', 'Candela Surker', 20, 250, 18, 1),
 ('DJFSDJNF869', 'Ganer Rander', 246, 74432, 17, 3),
 ('SFBJS347238', 'Furius Rider', 745, 451258, 14, 5);
+
+INSERT INTO salida(barco, patron, fecha, destino)
+VALUES
+(13, 2, '2001-06-12', 'VALENCIA'),
+(18, 2, '2006-09-17', 'PALMA DE MALLORCA'),
+(13, 3, '2007-12-25', 'MENORCA'),
+(14, 2, '2006-09-17', 'BARCELONA');
+
+COMMIT;

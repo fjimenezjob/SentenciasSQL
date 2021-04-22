@@ -47,6 +47,7 @@ CREATE TABLE IF NOT EXISTS procuradores_asuntos(
 );
 
 -- DATA INSERT IN procuradores
+BEGIN;
 INSERT INTO procuradores (nombre, apellido1, apellido2, dni, direccion, codigo_postal, fecha_nacimiento)
 VALUES 
 ('Elena', 'Garcia', 'Manchado', '56845971M', 'Calle de los peligros, 16', 08770, '1989-02-01'),
@@ -63,6 +64,8 @@ VALUES
 ('Mauricio', 'Colmenero', 'Asepe', '21447562K', 'Calle de alcala, 45', 33694, '1972-05-20'),
 ('Joan', 'Giribet', 'Morillo', '56987441O', 'Calle Roman rodrigo, 689', 59774, '1998-10-15'),
 ('Pepe', 'Pepito', 'Pelano', '56845963A', 'Calle Floreros de carmin, 82', 63559, '1985-11-17');
+
+SAVEPOINT;
 
 -- DATA INSERT IN asuntos
 INSERT INTO asuntos (id_cliente, id_procurador, estado)
@@ -85,3 +88,5 @@ VALUES
 (5, 3),
 (6, 4),
 (7, 5);
+
+COMMIT;

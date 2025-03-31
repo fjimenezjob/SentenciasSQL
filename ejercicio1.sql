@@ -15,16 +15,6 @@ CREATE TABLE IF NOT EXISTS procuradores(
     fecha_nacimiento DATETIME NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS clientes(
-    id BIGINT PRIMARY KEY AUTO_INCREMENT,
-    nombre VARCHAR(255) NOT NULL,
-    apellido1 VARCHAR(255) NOT NULL,
-    apellido2 VARCHAR(255) NOT NULL,
-    dni VARCHAR(255) NOT NULL,
-    direccion VARCHAR(255) NOT NULL,
-    codigo_postal INT (5),
-    fecha_nacimiento DATETIME NOT NULL
-);
 
 CREATE TABLE IF NOT EXISTS asuntos(
     id BIGINT PRIMARY KEY AUTO_INCREMENT,
